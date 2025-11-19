@@ -57,7 +57,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative text-gray-300 bg-gray-950 font-sans">
+    <footer className="relative text-gray-300 bg-gray-950 font-sans mt-12">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/image.png')" }}
@@ -117,7 +117,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.95 }}
-              className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-(--primary-color)] transition"
+              className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-(--primary-color)] transition hover:bg-(--primary-color)"
             >
               <Icon size={20} />
             </motion.a>
