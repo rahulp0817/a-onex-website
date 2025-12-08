@@ -39,9 +39,13 @@ const products = [
 
 export default function ProductPage() {
   const params = useParams();
+  const slug = params?.slug as string;
   //@ts-ignore
-  const sizeParam = decodeURIComponent(params?.size || "");
-  const sizeValue = parseInt(sizeParam);
+  // const sizeParam = decodeURIComponent(params?.size || "");
+  // const sizeValue = parseInt(sizeParam);
+  // const product = products.find((p) => p.size.value === sizeValue);
+  const sizeValue = parseInt(slug.match(/\d+/)?.[0] || "0");
+
   const product = products.find((p) => p.size.value === sizeValue);
 
   if (!product) {

@@ -22,6 +22,10 @@ const ProductCard = ({ product, index }: any) => {
     return () => clearTimeout(timer);
   }, [index]);
 
+  const slug = `${product.name.toLowerCase().replace(/ /g, "-")}-${
+    product.size.value
+  }${product.size.unit.toLowerCase()}`;
+
   return (
     <div
       className="rounded-xl bg-white transition-all duration-500 ease-out cursor-pointer"
@@ -33,7 +37,7 @@ const ProductCard = ({ product, index }: any) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => router.push(`/collections/${product.size.value}`)}
+      onClick={() => router.push(`/collections/${slug}`)}
     >
       {/* Image Section */}
       <div className="relative flex items-center justify-center shadow-md hover:shadow-lg min-h-[400px] bg-gray-100 rounded-xl overflow-hidden transition-shadow duration-300">
