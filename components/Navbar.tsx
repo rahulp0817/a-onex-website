@@ -61,7 +61,7 @@ const Navbar = () => {
 
             <NavItem
               label="Contact Us"
-              onClick={() => router.push("/aboutus")}
+              onClick={() => router.push("/contactus")}
             />
           </div>
         </div>

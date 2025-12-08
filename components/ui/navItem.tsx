@@ -24,7 +24,7 @@ const NavItem = ({
           hover: { width: "100%", opacity: 1 },
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="absolute left-0 -bottom-1 h-0.5 bg-green-500"
+        className="absolute left-0 -bottom-1 h-0.5 bg-(--primary-color)"
       />
     </motion.div>
   );

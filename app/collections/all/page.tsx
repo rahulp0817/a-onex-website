@@ -1,7 +1,5 @@
 import ProductBanner from "@/components/collectionsCards/ProductBanner";
 import ProductsList from "@/components/collectionsCards/ProductsList";
-import Promotions from "@/components/landing/Promotions";
-import React from "react";
 
 function Collections() {
   return (

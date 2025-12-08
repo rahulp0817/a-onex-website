@@ -33,7 +33,7 @@ const ProductCard = ({ product, index }: any) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => router.push(`/collections/${product.size}`)}
+      onClick={() => router.push(`/collections/${product.size.value}`)}
     >
       {/* Image Section */}
       <div className="relative flex items-center justify-center shadow-md hover:shadow-lg min-h-[400px] bg-gray-100 rounded-xl overflow-hidden transition-shadow duration-300">
@@ -76,7 +76,8 @@ const ProductCard = ({ product, index }: any) => {
       {/* Product Info */}
       <div className="p-4 mt-2 flex flex-col">
         <div className="text-lg font-semibold text-gray-800">
-          {product.size}
+          {product?.size?.value}
+          {product?.size?.unit}
         </div>
       </div>
     </div>
@@ -91,28 +92,40 @@ const ProductsList = ({ limit }: { limit?: number }) => {
       {
         name: "Aqua Pure Water",
         image: "",
-        size: "250ML",
+        size: {
+          value: 250,
+          unit: "ML",
+        },
         description:
           "Crystal clear purified water, perfect for daily hydration and healthy living.",
       },
       {
         name: "Fresh Mineral Water",
         image: "",
-        size: "500ML",
+        size: {
+          value: 500,
+          unit: "ML",
+        },
         description:
           "Rich in natural minerals, sourced from pristine springs for optimal wellness.",
       },
       {
         name: "Hydro Premium",
         image: "",
-        size: "1000ML",
+        size: {
+          value: 1000,
+          unit: "ML",
+        },
         description:
           "Premium quality water with enhanced minerals for your family's health.",
       },
       {
         name: "Blue Drop",
         image: "",
-        size: "2000ML",
+        size: {
+          value: 2000,
+          unit: "ML",
+        },
         description:
           "Large capacity bottle ideal for offices, events, and family gatherings.",
       },
@@ -129,7 +142,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 px-10 md:px-20 lg:px-40 py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-10 md:px-20 lg:px-40 py-16">
         {[...Array(displayedProducts.length)].map((_, i) => (
           <ProductSkeleton key={i} />
         ))}
@@ -138,7 +151,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-10 md:px-20 lg:px-40 py-16 pb-40">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-10 md:px-20 lg:px-40 py-16 ">
       {displayedProducts.map((product, index) => (
         <ProductCard key={index} product={product} index={index} />
       ))}

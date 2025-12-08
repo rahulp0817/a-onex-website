@@ -4,6 +4,7 @@ import { Montserrat, Kavoon } from "next/font/google";
 import "./globals.css";
 import FabSupport from "@/components/FabSupport";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${kavoon.variable} antialiased`}>
+        <Toaster />
         {children}
         <FabSupport />
         <Footer />

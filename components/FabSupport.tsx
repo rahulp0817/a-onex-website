@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { MessageCircle, X, Phone, Clock, User, Bot } from "lucide-react";
+import { openWhatsApp } from "@/utils/message";
 
 const FabSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,10 +22,10 @@ const FabSupport = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-14 h-14 rounded-full shadow-2xl transform transition-all duration-500 ease-out flex items-center justify-center relative overflow-hidden ${
+          className={`w-14 h-14 cursor-pointer rounded-full shadow-2xl transform transition-all duration-500 ease-out flex items-center justify-center relative overflow-hidden ${
             isOpen
               ? "bg-green-500 hover:bg-green-600 rotate-45 scale-110"
-              : "bg-gradient-to-br from-green-500 via-green-600 to-green-700 hover:from-green-600 hover:via-green-700 hover:to-green-800 hover:scale-110"
+              : "bg-linear-to-br from-green-500 via-green-600 to-green-700 hover:from-green-600 hover:via-green-700 hover:to-green-800 hover:scale-110"
           }`}
         >
           <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping"></div>
@@ -48,12 +49,6 @@ const FabSupport = () => {
           {/* Header */}
           <div className="bg-green-500 p-5 flex text-white relative overflow-hidden">
             <div className="relative z-10 flex space-x-3">
-              {/* Logo */}
-              {/* <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center border border-white border-opacity-30 shadow-lg">
-                <Bot className="h-7 w-7 text-white" />
-              </div> */}
-
-              {/* Title + Subtitle */}
               <div>
                 <h3 className="font-medium text-md mb-1">
                   Start a Conversation
@@ -80,7 +75,10 @@ const FabSupport = () => {
                   : "translate-y-8 opacity-0"
               }`}
             >
-              <div className="bg-gradient-to-br from-white to-gray-50 border-l-4 border-green-500 rounded-xl px-4 py-2 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group">
+              <div
+                onClick={() => openWhatsApp("Hello, I need help with my order")}
+                className="bg-linear-to-br from-white to-gray-50 border-l-4 border-green-500 rounded-xl px-4 py-2 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors">
                     <User className="h-5 w-5 text-green-600" />
@@ -103,7 +101,7 @@ const FabSupport = () => {
             <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
               <div className="flex items-center gap-1">
                 <Clock className="h-3 w-3" />
-                <span>24/7 Support</span>
+                <span>Mon-Sat (9AM-9PM)</span>
               </div>
               <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
               <div className="flex items-center gap-1">
