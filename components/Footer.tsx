@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import {
   Facebook,
   Instagram,
@@ -81,6 +81,12 @@ const Footer = () => {
     },
   ];
 
+  const springConfig: Transition = {
+    type: "spring",
+    stiffness: 400,
+    damping: 25,
+  };
+
   return (
     <footer className="relative text-gray-300 bg-gray-950 font-sans mt-12">
       <div
@@ -142,33 +148,46 @@ const Footer = () => {
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-start mt-28 space-x-4">
-          {[
-            { Icon: Facebook, link: "https://www.facebook.com/aonewaters" },
-            { Icon: Mail, link: "mailto:shreebalajiproducts23@gmail.com" },
-            { Icon: Instagram, link: "https://www.instagram.com/aonewaters" },
-            { Icon: Youtube, link: "https://www.youtube.com/@aonewaters" },
-            {
-              Icon: Linkedin,
-              link: "https://www.linkedin.com/company/aonewaters",
-            },
-            {
-              Icon: MapPin,
-              link: "https://www.google.com/maps/dir//Kapnoor,+Kalaburagi,+Karnataka+585104/@12.8903811,77.6421572,3559m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x3bc8c70de7489ef1:0x16888becee813b73!2m2!1d76.8543426!2d17.3625097?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D",
-            },
-          ].map(({ Icon, link }, index) => (
-            <motion.a
-              key={index}
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-(--primary-color)] transition hover:bg-(--primary-color)"
-            >
-              <Icon size={20} />
-            </motion.a>
-          ))}
+        <div className="flex justify-between items-center mt-28">
+          <div className="flex justify-start  space-x-4">
+            {[
+              { Icon: Facebook, link: "https://www.facebook.com/aonewaters" },
+              { Icon: Mail, link: "mailto:shreebalajiproducts23@gmail.com" },
+              { Icon: Instagram, link: "https://www.instagram.com/aonewaters" },
+              { Icon: Youtube, link: "https://www.youtube.com/@aonewaters" },
+              {
+                Icon: Linkedin,
+                link: "https://www.linkedin.com/company/aonewaters",
+              },
+              {
+                Icon: MapPin,
+                link: "https://www.google.com/maps/dir//Kapnoor,+Kalaburagi,+Karnataka+585104/@12.8903811,77.6421572,3559m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x3bc8c70de7489ef1:0x16888becee813b73!2m2!1d76.8543426!2d17.3625097?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D",
+              },
+            ].map(({ Icon, link }, index) => (
+              <motion.a
+                key={index}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-(--primary-color)] border border-gray-900 transition hover:bg-(--primary-color)"
+              >
+                <Icon size={20} />
+              </motion.a>
+            ))}
+          </div>
+          {/* <motion.div
+            transition={springConfig}
+            className="cursor-pointer flex-col flex"
+          >
+            <Link href="/">
+              <span className={`text-2xl font-kavoon text-(--primary-color)`}>
+                AONEX
+              </span>
+            </Link>
+            
+          </motion.div> */}
         </div>
 
         {/* Bottom Bar */}

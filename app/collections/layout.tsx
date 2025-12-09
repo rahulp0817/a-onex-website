@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarGlobal from "@/components/NavbarGlobal";
+import Navbar from "@/components/Navbar";
 
 export default async function PublicLayout({
   children,
@@ -8,7 +8,7 @@ export default async function PublicLayout({
 }) {
   return (
     <div className="pt-16 bg-white">
-      <NavbarGlobal />
+      <Navbar/>
       {children}
     </div>
   );

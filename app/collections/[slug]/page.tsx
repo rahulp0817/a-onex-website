@@ -20,7 +20,7 @@ const products = [
     image: "",
     size: { value: 500, unit: "ML" },
     description:
-      "Meet the Aonex 500 ml Packaged Drinking Water the perfect balance between “light to carry” and “enough to keep you going.” It’s crafted for the doers, the travellers, the meeting-hoppers, and everyone who loves staying refreshed without slowing down. One bottle, half a litre of pure clarity, and hydration that keeps you switched on.Every sip of Aonex delivers safe, purified, mineral-enhanced water, made to support your busy day from start to finish. Smooth taste, reliable quality, and absolute freshness that’s what this 500 ml bottle is all about.From events and offices to workouts and daily commutes, the Aonex 500 ml bottle slides right into your routine, giving you dependable hydration wherever life takes you. Choose Aonex because great days start with clean water",
+      "Meet the Aonex 500 ml Packaged Drinking Water the perfect balance between “light to carry” and “enough to keep you going.” It’s crafted for the doers, the travellers, the meeting-hoppers, and everyone who loves staying refreshed without slowing down. One bottle, half a litre of pure clarity, and hydration that keeps you switched on.Every sip of Aonex delivers safe, purified, mineral-enhanced water, made to support your busy day from start to finish. Smooth taste, reliable quality, and absolute freshness that’s what this 500 ml bottle is all about.\nFrom events and offices to workouts and daily commutes, the Aonex 500 ml bottle slides right into your routine, giving you dependable hydration wherever life takes you. Choose Aonex because great days start with clean water",
   },
   {
     name: "AoneX Fresh Drinking Water with Added Minerals",
@@ -64,7 +64,7 @@ export default function ProductPage() {
   return (
     <div className="px-10 lg:px-40 py-20">
       <motion.div
-        className="flex flex-col lg:flex-row items-center gap-10"
+        className="flex flex-col lg:flex-row items-center gap-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
