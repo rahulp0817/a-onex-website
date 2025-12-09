@@ -1,16 +1,15 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import NavItem from "./ui/navItem";
 
 const NavbarGlobal = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const router = useRouter();
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 0);
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -28,9 +27,8 @@ const NavbarGlobal = () => {
     boxShadow: isScrolled ? "0 2px 4px rgba(0,0,0,0.1)" : "none",
   };
 
-  const textStyles = "text-gray-800";
   const heightStyles = isScrolled ? "h-16" : "h-20";
-  const brandcoloredStyles = " text-[var(--primary-color)]";
+  const brandcoloredStyles = "text-[var(--primary-color)]";
 
   return (
     <motion.nav
@@ -44,28 +42,31 @@ const NavbarGlobal = () => {
         <div
           className={`relative flex items-center justify-center ${heightStyles}`}
         >
+          {/* Brand Logo */}
           <motion.div
             transition={springConfig}
             className="absolute left-0 cursor-pointer"
-            onClick={() => router.push("/")}
           >
-            <span className={`font-kavoon text-2xl ${brandcoloredStyles}`}>
-              AONEX
-            </span>
+            <Link href="/">
+              <span className={`font-kavoon text-2xl ${brandcoloredStyles}`}>
+                AONEX
+              </span>
+            </Link>
           </motion.div>
 
+          {/* Navigation Items */}
           <div className="flex items-center space-x-12">
-            <NavItem label="About Us" onClick={() => router.push("/aboutus")} />
+            <Link href="/aboutus">
+              <NavItem label="About Us" />
+            </Link>
 
-            <NavItem
-              label="Collections"
-              onClick={() => router.push("/collections/all")}
-            />
+            <Link href="/collections/all">
+              <NavItem label="Collections" />
+            </Link>
 
-            <NavItem
-              label="Contact Us"
-              onClick={() => router.push("/aboutus")}
-            />
+            <Link href="/contactus">
+              <NavItem label="Contact Us" />
+            </Link>
           </div>
         </div>
       </div>

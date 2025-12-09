@@ -2,14 +2,11 @@ import { motion } from "framer-motion";
 
 const NavItem = ({
   label,
-  onClick,
 }: {
   label: string;
-  onClick: () => void;
 }) => {
   return (
     <motion.div
-      onClick={onClick}
       className="relative cursor-pointer"
       initial="rest"
       whileHover="hover"

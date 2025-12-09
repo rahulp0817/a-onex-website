@@ -1,12 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, Transition } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import NavItem from "./ui/navItem";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,28 +40,31 @@ const Navbar = () => {
         <div
           className={`relative flex items-center justify-center ${heightStyles}`}
         >
+          {/* Brand Logo */}
           <motion.div
             transition={springConfig}
             className="absolute left-0 cursor-pointer"
-            onClick={() => router.push("/")}
           >
-            <span className={`text-2xl font-kavoon ${brandcoloredStyles}`}>
-              AONEX
-            </span>
+            <Link href="/">
+              <span className={`text-2xl font-kavoon ${brandcoloredStyles}`}>
+                AONEX
+              </span>
+            </Link>
           </motion.div>
 
+          {/* Navigation Items */}
           <div className="flex items-center space-x-12">
-            <NavItem label="About Us" onClick={() => router.push("/aboutus")} />
+            <Link href="/aboutus">
+              <NavItem label="About Us" />
+            </Link>
 
-            <NavItem
-              label="Collections"
-              onClick={() => router.push("/collections/all")}
-            />
+            <Link href="/collections/all">
+              <NavItem label="Collections" />
+            </Link>
 
-            <NavItem
-              label="Contact Us"
-              onClick={() => router.push("/contactus")}
-            />
+            <Link href="/contactus">
+              <NavItem label="Contact Us" />
+            </Link>
           </div>
         </div>
       </div>

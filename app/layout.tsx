@@ -5,6 +5,7 @@ import "./globals.css";
 import FabSupport from "@/components/FabSupport";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import NextTopLoader from "nextjs-toploader";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${kavoon.variable} antialiased`}>
+         <NextTopLoader color="#C1272D" showSpinner={false} />
         <Toaster />
         {children}
         <FabSupport />
