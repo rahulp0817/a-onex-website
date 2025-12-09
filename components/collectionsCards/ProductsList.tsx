@@ -53,7 +53,7 @@ const ProductCard = ({ product, index }: any) => {
         ) : (
           <div className="flex flex-col items-center justify-center text-gray-400">
             <Droplet size={48} strokeWidth={1.5} />
-            <span className="text-sm mt-2 font-medium">{product.name}</span>
+            <span className="text-sm mt-2 font-medium">Aonex Waters</span>
           </div>
         )}
 
@@ -94,7 +94,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
   const products = useMemo(
     () => [
       {
-        name: "Aqua Pure Water",
+        name: "AoneX Fresh Drinking Water with Added Minerals",
         image: "",
         size: {
           value: 250,
@@ -104,7 +104,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
           "Crystal clear purified water, perfect for daily hydration and healthy living.",
       },
       {
-        name: "Fresh Mineral Water",
+        name: "AoneX Fresh Drinking Water with Added Minerals",
         image: "",
         size: {
           value: 500,
@@ -114,7 +114,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
           "Rich in natural minerals, sourced from pristine springs for optimal wellness.",
       },
       {
-        name: "Hydro Premium",
+        name: "AoneX Fresh Drinking Water with Added Minerals",
         image: "",
         size: {
           value: 1000,
@@ -124,7 +124,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
           "Premium quality water with enhanced minerals for your family's health.",
       },
       {
-        name: "Blue Drop",
+        name: "AoneX Fresh Drinking Water with Added Minerals",
         image: "",
         size: {
           value: 2000,
