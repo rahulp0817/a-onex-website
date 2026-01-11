@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { copyToClipboard, openWhatsApp } from "@/utils/message";
 import { toast } from "sonner";
 import { Droplet } from "lucide-react";
+import Link from "next/link";
 
 const products = [
   {
@@ -41,10 +42,6 @@ const products = [
 export default function ProductPage() {
   const params = useParams();
   const slug = params?.slug as string;
-  //@ts-ignore
-  // const sizeParam = decodeURIComponent(params?.size || "");
-  // const sizeValue = parseInt(sizeParam);
-  // const product = products.find((p) => p.size.value === sizeValue);
   const sizeValue = parseInt(slug.match(/\d+/)?.[0] || "0");
 
   const product = products.find((p) => p.size.value === sizeValue);
@@ -62,9 +59,27 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="px-10 lg:px-40 py-20">
+    <div className="px-10 lg:px-30 py-20">
+      <div className="mb-8 text-sm text-gray-500 flex items-center gap-2">
+        <Link href="/" className="hover:text-blue-500 font-medium transition">
+          Home
+        </Link>
+        <span>/</span>
+        <Link
+          href="/collections/all"
+          className="hover:text-blue-500 transition font-medium "
+        >
+          Collections
+        </Link>
+        <span>/</span>
+        <span className="text-gray-800 font-medium ">
+          {product.size.value}
+          {product.size.unit}
+        </span>
+      </div>
+
       <motion.div
-        className="flex flex-col lg:flex-row items-center gap-12"
+        className="flex flex-col lg:flex-row items-center gap-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}

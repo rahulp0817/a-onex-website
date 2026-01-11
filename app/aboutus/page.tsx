@@ -1,8 +1,12 @@
-import React from "react";
+import AboutUsContent from "@/components/aboutus/AboutUsContent";
+import AboutusBanner from "@/components/aboutus/AboutusBanner";
 
 function AboutUs() {
   return (
-    <section className="flex min-h-screen bg-white flex-col items-center justify-between p-0"></section>
+    <main className="flex mt-3 bg-white flex-col justify-between ">
+      <AboutusBanner />
+      <AboutUsContent />
+    </main>
   );
 }
 

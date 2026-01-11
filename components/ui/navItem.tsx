@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 
-const NavItem = ({
-  label,
-}: {
+interface NavItemProps {
   label: string;
-}) => {
+  isScrolled: boolean;
+}
+
+const NavItem = ({ label, isScrolled }: NavItemProps) => {
+  // Dynamic colors based on scroll
+  const textColor = isScrolled ? "text-black" : "text-white";
+  const underlineColor = "bg-[var(--primary-color)]";
+
   return (
     <motion.div
       className="relative cursor-pointer"
@@ -12,7 +17,7 @@ const NavItem = ({
       whileHover="hover"
       animate="rest"
     >
-      <span className="text-md font-bold text-black">{label}</span>
+      <span className={`text-md font-semibold ${textColor}`}>{label}</span>
 
       {/* Animated underline */}
       <motion.div
@@ -21,7 +26,7 @@ const NavItem = ({
           hover: { width: "100%", opacity: 1 },
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="absolute left-0 -bottom-1 h-0.5 bg-(--primary-color)"
+        className={`absolute left-0 -bottom-1 h-0.5 ${underlineColor}`}
       />
     </motion.div>
   );

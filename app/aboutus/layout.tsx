@@ -7,7 +7,7 @@ export default async function AboutusLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-white flex-col items-center justify-between p-0">
+    <div className="pt-16 bg-white">
       <Navbar />
       {children}
     </div>

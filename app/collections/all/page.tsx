@@ -4,7 +4,7 @@ import ProductsList from "@/components/collectionsCards/ProductsList";
 function Collections() {
   return (
     <main className="flex mt-3 min-h-screen bg-white flex-col justify-between ">
-      <ProductBanner />
+      <ProductBanner name="Our Collections"/>
       <ProductsList />
     </main>
   );

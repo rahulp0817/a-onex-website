@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${kavoon.variable} antialiased`}>
-         <NextTopLoader color="#C1272D" showSpinner={false} />
+        <NextTopLoader color="#3B82F6" showSpinner={false} />
         <Toaster />
         {children}
         <FabSupport />

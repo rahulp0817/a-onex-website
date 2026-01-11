@@ -98,7 +98,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
       {/* CONTENT */}
-      <div className="relative max-w-full mx-auto px-10 md:px-20 lg:px-40 py-16">
+      <div className="relative max-w-full mx-auto px-10 md:px-20 lg:px-30 py-16">
         {/* Footer Sections */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-24">
           {footerLinks.map((section, i) => (

@@ -4,10 +4,10 @@ import { Droplet } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const ProductSkeleton = () => (
-  <div className="rounded-xl overflow-hidden bg-white shadow-md">
-    <div className="min-h-96 w-full bg-gray-200 animate-pulse"></div>
-    <div className="p-4">
-      <div className="h-6 bg-gray-200 rounded animate-pulse w-1/2"></div>
+  <div className="rounded-xl shadow-sm overflow-hidden animate-pulse">
+    <div className="relative min-h-[400px] bg-gray-200 rounded-xl" />
+    <div className="p-4 mt-2">
+      <div className="h-5 w-24 bg-gray-300 rounded-md" />
     </div>
   </div>
 );
@@ -146,7 +146,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-10 md:px-20 lg:px-40 py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-10 md:px-20 lg:px-30 py-16">
         {[...Array(displayedProducts.length)].map((_, i) => (
           <ProductSkeleton key={i} />
         ))}
@@ -155,7 +155,7 @@ const ProductsList = ({ limit }: { limit?: number }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-10 md:px-20 lg:px-40 py-16 ">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-10 md:px-20 lg:px-30 py-16 ">
       {displayedProducts.map((product, index) => (
         <ProductCard key={index} product={product} index={index} />
       ))}

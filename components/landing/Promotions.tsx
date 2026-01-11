@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Gift } from "lucide-react";
+import { ArrowRight, Gift } from "lucide-react";
 import Image from "next/image";
 
 const Promotions = () => {
@@ -50,11 +50,12 @@ const Promotions = () => {
 
           <motion.a
             href="/products"
-            className="inline-block bg-white text-green-700 font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 transition"
+            className="inline-flex items-center gap-2 bg-white text-green-700 font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             EXPLORE PRODUCTS
+            <ArrowRight className="-rotate-45" size={28} />
           </motion.a>
         </motion.div>
       </div>
