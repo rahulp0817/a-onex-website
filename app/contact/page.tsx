@@ -3,6 +3,7 @@
 import ContactDetails from "@/components/contactus/ContactDetails";
 import SupportForm from "@/components/contactus/SupportForm";
 import HeadingBanner from "@/components/HeadingBanner";
+import { sendEmail } from "@/services/emailService";
 import React from "react";
 
 function Contactus() {
@@ -21,24 +22,21 @@ function Contactus() {
         <div className="flex-1">
           <SupportForm
             onSubmitForm={async (data) => {
-              console.log(data);
+              try {
+                console.log(data);
 
-              // EMAILJS CALL HERE
+                await sendEmail({
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                  email: data.email,
+                  phone: data.phone,
+                  message: data.message,
+                });
 
-              /*
-    await emailjs.send(
-      "SERVICE_ID",
-      "TEMPLATE_ID",
-      {
-        first_name: data.firstName,
-        last_name: data.lastName,
-        email: data.email,
-        phone: data.phone,
-        message: data.message,
-      },
-      "PUBLIC_KEY"
-    );
-    */
+                console.log("Email sent successfully");
+              } catch (error) {
+                console.error("Error sending email:", error);
+              }
             }}
           />
         </div>
@@ -48,3 +46,8 @@ function Contactus() {
 }
 
 export default Contactus;
+
+// email service
+// template id
+// public key: in account section
+// install: npm install @emailjs/browser

@@ -40,7 +40,7 @@ const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
     try {
       setLoading(true);
 
-      console.log("FORM DATA:", formData);
+      // console.log("FORM DATA:", formData);
 
       await onSubmitForm(formData);
 
@@ -193,9 +193,9 @@ const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              maxLength={10}
+              maxLength={15}
               required
-              placeholder="+91 9876543210"
+              placeholder="9876543210"
               className="
                 h-10
                 w-full
@@ -271,7 +271,7 @@ const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
             disabled:opacity-70
           "
         >
-          {loading ? "Sending..." : sent ? "Message Sent ✓" : "Send Message"}
+          {loading ? "Sending..." : sent ? "Message Sent" : "Send Message"}
         </motion.button>
       </form>
     </motion.div>
