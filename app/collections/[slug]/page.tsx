@@ -7,23 +7,27 @@ import { copyToClipboard, openWhatsApp } from "@/utils/message";
 import { toast } from "sonner";
 import { Droplet } from "lucide-react";
 import Link from "next/link";
+import PromotionProducts from "@/components/collectionsCards/PromotionProducts";
 
 const products = [
   {
-    name: "AoneX Premium Drinking Water with Added Minerals",
-    image: "",
+    id: 1,
+    name: "Aone Packaged Drinking Water",
+    image: "/bottle.png",
     size: { value: 250, unit: "ML" },
     description:
-      "Say hello to Aonex’s easy-fit 250 ml Packaged Drinking Water your tiny-but-mighty hydration partner for every moment of the day.Light to carry, quick to sip, and perfectly refreshing, it fits effortlessly into your routine whether you’re hustling at work, powering through a gym session, chilling at home, or heading out on a trip. Aonex delivers safe, clean and mineral-enhanced drinking water, crafted for everyday India. From a fast thirst fix to steady hydration, our 250 ml bottle is just the start. Aonex offers a full range of bottle sizes and premium mineral options to match every lifestyle and every thirst.\n Trusted across India, Aonex Packaged Drinking Water stands for purity, consistency, and care ensuring every sip is clean, crisp, and made to elevate your day. Clean water, clear choice that’s Aonex",
+      "Aone 250 ml Packaged Drinking Water is your compact hydration companion designed for life on the move. Lightweight, refreshing, and easy to carry, it fits seamlessly into your everyday routine whether you're at work, at the gym, traveling, studying, or relaxing at home.Crafted with advanced purification and enriched with essential minerals, Aonex delivers clean, safe, and refreshing drinking water you can trust every day. The 250 ml bottle is perfect for quick hydration while maintaining the purity, freshness, and quality that define the Aonex experience.Beyond convenience, Aonex offers a complete range of packaged drinking water solutions and premium mineral water options tailored to every lifestyle and hydration need. Trusted across India, Aonex stands for purity, consistency, and care ensuring every sip is crisp, clean, and revitalizing.Clean Water. Pure Refreshment. That’s Aonex",
   },
   {
+    id: 2,
     name: "AoneX Fresh Drinking Water with Added Minerals",
     image: "",
     size: { value: 500, unit: "ML" },
     description:
-      "Meet the Aonex 500 ml Packaged Drinking Water the perfect balance between “light to carry” and “enough to keep you going.” It’s crafted for the doers, the travellers, the meeting-hoppers, and everyone who loves staying refreshed without slowing down. One bottle, half a litre of pure clarity, and hydration that keeps you switched on.Every sip of Aonex delivers safe, purified, mineral-enhanced water, made to support your busy day from start to finish. Smooth taste, reliable quality, and absolute freshness that’s what this 500 ml bottle is all about.\nFrom events and offices to workouts and daily commutes, the Aonex 500 ml bottle slides right into your routine, giving you dependable hydration wherever life takes you. Choose Aonex because great days start with clean water",
+      "Aonex 500 ml Packaged Drinking Water the perfect balance between “light to carry” and “enough to keep you going.” It’s crafted for the doers, the travellers, the meeting-hoppers, and everyone who loves staying refreshed without slowing down. One bottle, half a litre of pure clarity, and hydration that keeps you switched on.Every sip of Aonex delivers safe, purified, mineral-enhanced water, made to support your busy day from start to finish. Smooth taste, reliable quality, and absolute freshness that’s what this 500 ml bottle is all about.\nFrom events and offices to workouts and daily commutes, the Aonex 500 ml bottle slides right into your routine, giving you dependable hydration wherever life takes you. Choose Aonex because great days start with clean water",
   },
   {
+    id: 3,
     name: "AoneX Fresh Drinking Water with Added Minerals",
     image: "",
     size: { value: 1000, unit: "ML" },
@@ -31,6 +35,7 @@ const products = [
       "Our 1 Litre Aonex Packaged Drinking Water is built for long days, long journeys, and everything in between. When you’re constantly on the move, this is the bottle that keeps you fueled a clear and reliable choice for staying hydrated from morning to night with premium, refreshing water. \nWhether you need a quick sip or steady hydration that lasts for hours, Aonex offers 1 Litre bottles along with a wide range of other sizes and mineral-rich options to suit every lifestyle and every thirst.\nTrusted across India, Aonex Packaged Drinking Water delivers clean, safe, and consistently pure water to people everywhere ensuring hydration you can count on, wherever the day takes you. Clean water. Confident choice. That’s Aonex",
   },
   {
+    id: 4,
     name: "AoneX Fresh Drinking Water with Added Minerals",
     image: "",
     size: { value: 2000, unit: "ML" },
@@ -59,7 +64,7 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="px-10 lg:px-30 py-20">
+    <div className="px-10 lg:px-24 py-20">
       <div className="mb-8 text-sm text-gray-500 flex items-center gap-2">
         <Link href="/" className="hover:text-blue-500 font-medium transition">
           Home
@@ -94,7 +99,7 @@ export default function ProductPage() {
           {product.image ? (
             <img
               src={product.image}
-              className="w-full rounded-lg shadow-lg object-cover max-h-[530px]"
+              className="w-full rounded-lg border object-contain max-h-[530px]"
             />
           ) : (
             <div className="w-full h-[530px] bg-gray-200 rounded-lg flex flex-col items-center justify-center text-gray-500">
@@ -126,7 +131,7 @@ export default function ProductPage() {
               className="bg-(--primary-color) h-10 rounded-xl font-semibold flex-1 hover:bg-blue-800"
               onClick={() =>
                 openWhatsApp(
-                  `Hi, I want to know about this product: ${product.name} - ${window.location.href}`
+                  `Hi, I want to know about this product: ${product.name} - ${window.location.href}`,
                 )
               }
             >
@@ -144,6 +149,11 @@ export default function ProductPage() {
           </div>
         </motion.div>
       </motion.div>
+
+      <PromotionProducts currentProduct={product} />
     </div>
   );
 }
+
+// reled products
+// get in touch button -> Become distributor

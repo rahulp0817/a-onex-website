@@ -5,10 +5,13 @@ import Link from "next/link";
 import NavItem from "./ui/navItem";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { EnquireNow } from "./EnquireNow";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const isLandingPage = pathname === "/";
 
@@ -35,7 +38,7 @@ const Navbar = () => {
       : "bg-transparent"
     : "bg-white shadow-md";
 
-  const heightStyles = isScrolled ? "h-18" : "h-20";
+  const heightStyles = isScrolled ? "h-24" : "h-24";
   const logoColor = isLandingPage
     ? isScrolled
       ? "text-[var(--primary-color)]"
@@ -49,25 +52,32 @@ const Navbar = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={springConfig}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${navbarClass}`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white`}
       >
-        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-30">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-16">
           <div
             className={`relative flex items-center justify-between ${heightStyles}`}
           >
             {/* Brand Logo */}
             <motion.div transition={springConfig} className="cursor-pointer">
               <Link href="/">
-                <span
-                  className={`text-2xl font-kavoon transition-colors duration-300 hover:text-(--primary-color) ${logoColor}`}
-                >
-                  AONEX
-                </span>
+                <Image
+                  src="/Aonex-name.png"
+                  alt="AONEX"
+                  width={160}
+                  height={20}
+                  className="transition-opacity duration-300 overflow-hidden hover:opacity-80"
+                  priority
+                />
               </Link>
             </motion.div>
 
             {/* Navigation Items */}
             <div className="hidden md:flex items-center space-x-8">
+              <Link href="/">
+                <NavItem label="Home" isScrolled={navScrolledProp} />
+              </Link>
+
               <Link href="/aboutus">
                 <NavItem label="About Us" isScrolled={navScrolledProp} />
               </Link>
@@ -76,23 +86,28 @@ const Navbar = () => {
                 <NavItem label="Collections" isScrolled={navScrolledProp} />
               </Link>
 
-              {/* Enquire Now Button */}
-              <Link href="/enquire">
-                <button className="group ml-4 px-5 py-3 cursor-pointer bg-blue-500 text-white font-medium rounded-full hover:bg-blue-600 transition-colors duration-300 flex gap-2 items-center">
-                  Enquire Now
-                  <ArrowRight
-                    size={24}
-                    className="
-      -rotate-45
-      transition-transform
-      duration-500
-      ease-[cubic-bezier(0.22,1,0.36,1)]
-      group-hover:rotate-0
-      group-hover:translate-x-1
-    "
-                  />
-                </button>
+              <Link href="/contact">
+                <NavItem label="Contact" isScrolled={navScrolledProp} />
               </Link>
+
+              {/* <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                className="flex flex-wrap gap-4 mb-0"
+              >
+                <button
+                  onClick={() => setOpen(true)}
+                  className="group relative flex items-center pl-3.5 py-2 pr-2.5 rounded-full bg-blue-600 text-white font-medium cursor-pointer overflow-hidden"
+                >
+                  <span className="relative z-10">Enquire Now</span>
+
+                  <span className="relative z-10 ml-3 flex items-center justify-center w-8 h-8 rounded-full bg-white text-neutral-500 transition-transform duration-300 group-hover:rotate-0 -rotate-45">
+                    <ArrowRight size={24} />
+                  </span>
+                </button>
+              </motion.div> */}
             </div>
 
             {/* Mobile Menu Icon */}
@@ -140,6 +155,8 @@ const Navbar = () => {
           </Link>
         </motion.div>
       )}
+
+      <EnquireNow isOpen={open} onClose={() => setOpen(false)} />
     </>
   );
 };

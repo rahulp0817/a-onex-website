@@ -12,6 +12,7 @@ import {
   MapIcon,
   MapPin,
 } from "lucide-react";
+import Image from "next/image";
 
 interface FooterItem {
   name: string;
@@ -41,11 +42,10 @@ const Footer = () => {
       title: "OUR COMPANY",
       items: [
         { name: "About", link: "/aboutus" },
-        { name: "Collections", link: "/collections/all" },
+        { name: "Products", link: "/collections/all" },
         { name: "Become Dealer", link: "/club" },
-        { name: "A-One Gallery", link: "/collections/all" },
+        { name: "Gallery", link: "/collections/all" },
         { name: "Manufacturing Plants", link: "/collections/all" },
-        { name: "Book a Plant Visit", link: "/collections/all" },
       ],
     },
     {
@@ -88,17 +88,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative text-gray-300 bg-gray-950 font-sans mt-12">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/image.png')" }}
-      ></div>
+    <footer className="relative bg-[#152f3e] font-sans mt-12">
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
       {/* CONTENT */}
-      <div className="relative max-w-full mx-auto px-10 md:px-20 lg:px-30 py-16">
+      <div className="relative max-w-full mx-auto px-10 md:px-20 lg:px-24 py-16">
         {/* Footer Sections */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-24">
           {footerLinks.map((section, i) => (
@@ -131,12 +127,12 @@ const Footer = () => {
                     ) : item.link ? (
                       <Link
                         href={item.link}
-                        className="text-gray-300 text-sm font-semibold hover:text-white transition-colors"
+                        className="text-gray-400 text-sm font-semibold hover:text-white transition-colors"
                       >
                         {item.name}
                       </Link>
                     ) : (
-                      <p className="text-gray-300 text-sm font-semibold">
+                      <p className="text-gray-400 text-sm font-semibold">
                         {item.name}
                       </p>
                     )}
@@ -191,7 +187,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-10 border-t border-gray-400 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-semibold text-gray-300">
+        <div className="mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-semibold text-gray-400">
           <p>
             © {new Date().getFullYear()} Shree Balaji Products | A Division of
             Lifetime Brands, Inc. All Rights Reserved.
@@ -201,11 +197,12 @@ const Footer = () => {
             onClick={scrollToTop}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 bg-(--primary-color) rounded-full text-white hover:bg-(--primary-color-dark)"
+            className="p-2 bg-(--primary-color) rounded-full text-white cursor-pointer"
           >
             <ArrowUp className="w-4 h-4" />
           </motion.button>
         </div>
+
       </div>
     </footer>
   );

@@ -1,10 +1,13 @@
+import HeadingBanner from "@/components/HeadingBanner";
 import AboutUsContent from "@/components/aboutus/AboutUsContent";
-import AboutusBanner from "@/components/aboutus/AboutusBanner";
 
 function AboutUs() {
   return (
     <main className="flex mt-3 bg-white flex-col justify-between ">
-      <AboutusBanner />
+      <HeadingBanner
+        name="About Us"
+        description="Pure hydration thoughtfully crafted for healthier living and everyday refreshment."
+      />
       <AboutUsContent />
     </main>
   );

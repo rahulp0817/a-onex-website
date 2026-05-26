@@ -7,7 +7,7 @@ interface NavItemProps {
 
 const NavItem = ({ label, isScrolled }: NavItemProps) => {
   // Dynamic colors based on scroll
-  const textColor = isScrolled ? "text-black" : "text-white";
+  const textColor = "text-[#152f3e]";
   const underlineColor = "bg-[var(--primary-color)]";
 
   return (
