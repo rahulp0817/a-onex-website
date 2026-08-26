@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -110,8 +111,8 @@ export default function Promotion() {
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
               className="flex flex-wrap gap-4 mt-8"
             >
-              <button
-                onClick={() => {}}
+              <Link
+                href="/contact"
                 className="group relative flex items-center pl-5 py-2 pr-3 rounded-full bg-white text-[#1495eb] text-[16px] cursor-pointer overflow-hidden"
               >
                 <span className="relative z-10 font-medium">Enquire Now</span>
@@ -119,7 +120,7 @@ export default function Promotion() {
                 <span className="relative z-10 ml-4 flex items-center justify-center w-10 h-10 rounded-full bg-[#1495eb] text-white transition-transform duration-300 group-hover:rotate-0 -rotate-45">
                   <ArrowRight />
                 </span>
-              </button>
+              </Link>
             </motion.div>
           </div>
 

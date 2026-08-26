@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import SubmitSuccess from "./SubmitSuccess";
 
 interface SupportFormProps {
   onSubmitForm: (data: {
@@ -16,6 +17,7 @@ interface SupportFormProps {
 const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -40,10 +42,9 @@ const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
     try {
       setLoading(true);
 
-      // console.log("FORM DATA:", formData);
-
       await onSubmitForm(formData);
 
+      setSubmittedName(formData.firstName);
       setSent(true);
 
       setFormData({
@@ -53,10 +54,6 @@ const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
         phone: "",
         message: "",
       });
-
-      setTimeout(() => {
-        setSent(false);
-      }, 3000);
     } catch (error) {
       console.error(error);
     } finally {
@@ -65,216 +62,220 @@ const SupportForm = ({ onSubmitForm }: SupportFormProps) => {
   };
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 40,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      transition={{
-        duration: 0.8,
-      }}
-      viewport={{ once: true }}
-      className="w-full"
-    >
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* NAME ROW */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* FIRST NAME */}
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
-              First Name
-            </label>
-
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-              placeholder="First name"
-              className="
-                h-10
-                w-full
-                rounded-lg
-                border
-                border-gray-300
-                bg-white
-                px-4
-                text-base
-                outline-none
-                transition-all
-                duration-300
-                focus:border-[#152f3e]
-                focus:ring-4
-                focus:ring-[#152f3e]/10
-              "
-            />
-          </div>
-
-          {/* LAST NAME */}
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
-              Last Name
-            </label>
-
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-              placeholder="Last Name"
-              className="
-                h-10
-                w-full
-                rounded-lg
-                border
-                border-gray-300
-                bg-white
-                px-4
-                text-base
-                outline-none
-                transition-all
-                duration-300
-                focus:border-[#152f3e]
-                focus:ring-4
-                focus:ring-[#152f3e]/10
-              "
-            />
-          </div>
-        </div>
-
-        {/* EMAIL + PHONE */}
-        <div className="grid gap-4 md:grid-cols-1">
-          {/* EMAIL */}
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
-              Email Address
-            </label>
-
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="you@example.com"
-              className="
-                h-10
-                w-full
-                rounded-lg
-                border
-                border-gray-300
-                bg-white
-                px-4
-                text-base
-                outline-none
-                transition-all
-                duration-300
-                focus:border-[#152f3e]
-                focus:ring-4
-                focus:ring-[#152f3e]/10
-              "
-            />
-          </div>
-
-          {/* PHONE */}
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
-              Phone Number
-            </label>
-
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              maxLength={15}
-              required
-              placeholder="9876543210"
-              className="
-                h-10
-                w-full
-                rounded-lg
-                border
-                border-gray-300
-                bg-white
-                px-4
-                text-base
-                outline-none
-                transition-all
-                duration-300
-                focus:border-[#152f3e]
-                focus:ring-4
-                focus:ring-[#152f3e]/10
-              "
-            />
-          </div>
-        </div>
-
-        {/* MESSAGE */}
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
-            Message
-          </label>
-
-          <textarea
-            rows={3}
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            placeholder="Leave us a message..."
-            className="
-              w-full
-              rounded-lg
-              border
-              border-gray-300
-              bg-white
-              p-4
-              text-base
-              outline-none
-              transition-all
-              duration-300
-              focus:border-[#152f3e]
-              focus:ring-4
-              focus:ring-[#152f3e]/10
-            "
+    <div className="w-full">
+      <AnimatePresence mode="wait">
+        {sent ? (
+          <SubmitSuccess
+            key="success"
+            name={submittedName}
+            onReset={() => setSent(false)}
           />
-        </div>
+        ) : (
+          <motion.div
+            key="form"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.4 }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* NAME ROW */}
+              <div className="grid gap-6 md:grid-cols-2">
+                {/* FIRST NAME */}
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
+                    First Name
+                  </label>
 
-        {/* BUTTON */}
-        <motion.button
-          type="submit"
-          disabled={loading}
-          className="
-            flex
-            h-10
-            w-full
-            items-center
-            justify-center
-            rounded-full
-            bg-[#152f3e]
-            text-base
-            font-semibold
-            text-white
-            shadow-lg
-            transition-all
-            duration-300
-            cursor-pointer
-            hover:bg-[#1d4459]
-            disabled:cursor-not-allowed
-            disabled:opacity-70
-          "
-        >
-          {loading ? "Sending..." : sent ? "Message Sent" : "Send Message"}
-        </motion.button>
-      </form>
-    </motion.div>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    placeholder="First name"
+                    className="
+                      h-10
+                      w-full
+                      rounded-lg
+                      border
+                      border-gray-300
+                      bg-white
+                      px-4
+                      text-base
+                      outline-none
+                      transition-all
+                      duration-300
+                      focus:border-[#152f3e]
+                      focus:ring-4
+                      focus:ring-[#152f3e]/10
+                    "
+                  />
+                </div>
+
+                {/* LAST NAME */}
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
+                    Last Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                    placeholder="Last Name"
+                    className="
+                      h-10
+                      w-full
+                      rounded-lg
+                      border
+                      border-gray-300
+                      bg-white
+                      px-4
+                      text-base
+                      outline-none
+                      transition-all
+                      duration-300
+                      focus:border-[#152f3e]
+                      focus:ring-4
+                      focus:ring-[#152f3e]/10
+                    "
+                  />
+                </div>
+              </div>
+
+              {/* EMAIL + PHONE */}
+              <div className="grid gap-4 md:grid-cols-1">
+                {/* EMAIL */}
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="you@example.com"
+                    className="
+                      h-10
+                      w-full
+                      rounded-lg
+                      border
+                      border-gray-300
+                      bg-white
+                      px-4
+                      text-base
+                      outline-none
+                      transition-all
+                      duration-300
+                      focus:border-[#152f3e]
+                      focus:ring-4
+                      focus:ring-[#152f3e]/10
+                    "
+                  />
+                </div>
+
+                {/* PHONE */}
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
+                    Phone Number
+                  </label>
+
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    maxLength={15}
+                    required
+                    placeholder="Enter your phone number"
+                    className="
+                      h-10
+                      w-full
+                      rounded-lg
+                      border
+                      border-gray-300
+                      bg-white
+                      px-4
+                      text-base
+                      outline-none
+                      transition-all
+                      duration-300
+                      focus:border-[#152f3e]
+                      focus:ring-4
+                      focus:ring-[#152f3e]/10
+                    "
+                  />
+                </div>
+              </div>
+
+              {/* MESSAGE */}
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-[#152f3e]">
+                  Message
+                </label>
+
+                <textarea
+                  rows={3}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  placeholder="Leave us a message..."
+                  className="
+                    w-full
+                    rounded-lg
+                    border
+                    border-gray-300
+                    bg-white
+                    p-4
+                    text-base
+                    outline-none
+                    transition-all
+                    duration-300
+                    focus:border-[#152f3e]
+                    focus:ring-4
+                    focus:ring-[#152f3e]/10
+                  "
+                />
+              </div>
+
+              {/* BUTTON */}
+              <motion.button
+                type="submit"
+                disabled={loading}
+                className="
+                  flex
+                  h-10
+                  w-full
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-[#152f3e]
+                  text-base
+                  font-semibold
+                  text-white
+                  shadow-lg
+                  transition-all
+                  duration-300
+                  cursor-pointer
+                  hover:bg-[#1d4459]
+                  disabled:cursor-not-allowed
+                  disabled:opacity-70
+                "
+              >
+                {loading ? "Sending..." : "Send Message"}
+              </motion.button>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

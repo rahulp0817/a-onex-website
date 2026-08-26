@@ -32,18 +32,7 @@ const Navbar = () => {
     damping: 25,
   };
 
-  const navbarClass = isLandingPage
-    ? isScrolled
-      ? "bg-white/30 backdrop-blur-xl shadow-md"
-      : "bg-transparent"
-    : "bg-white shadow-md";
-
   const heightStyles = isScrolled ? "h-24" : "h-24";
-  const logoColor = isLandingPage
-    ? isScrolled
-      ? "text-[var(--primary-color)]"
-      : "text-white"
-    : "text-[var(--primary-color)]";
   const navScrolledProp = isLandingPage ? isScrolled : true;
 
   return (
@@ -54,7 +43,7 @@ const Navbar = () => {
         transition={springConfig}
         className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white`}
       >
-        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-24">
           <div
             className={`relative flex items-center justify-between ${heightStyles}`}
           >
@@ -62,9 +51,9 @@ const Navbar = () => {
             <motion.div transition={springConfig} className="cursor-pointer">
               <Link href="/">
                 <Image
-                  src="/Aonex-name.png"
+                  src="/Aonex-logo-tra.png"
                   alt="AONEX"
-                  width={160}
+                  width={120}
                   height={20}
                   className="transition-opacity duration-300 overflow-hidden hover:opacity-80"
                   priority
@@ -89,25 +78,6 @@ const Navbar = () => {
               <Link href="/contact">
                 <NavItem label="Contact" isScrolled={navScrolledProp} />
               </Link>
-
-              {/* <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                className="flex flex-wrap gap-4 mb-0"
-              >
-                <button
-                  onClick={() => setOpen(true)}
-                  className="group relative flex items-center pl-3.5 py-2 pr-2.5 rounded-full bg-blue-600 text-white font-medium cursor-pointer overflow-hidden"
-                >
-                  <span className="relative z-10">Enquire Now</span>
-
-                  <span className="relative z-10 ml-3 flex items-center justify-center w-8 h-8 rounded-full bg-white text-neutral-500 transition-transform duration-300 group-hover:rotate-0 -rotate-45">
-                    <ArrowRight size={24} />
-                  </span>
-                </button>
-              </motion.div> */}
             </div>
 
             {/* Mobile Menu Icon */}

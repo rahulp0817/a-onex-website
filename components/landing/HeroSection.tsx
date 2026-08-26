@@ -79,7 +79,7 @@ function HeroSection() {
             className="flex flex-wrap gap-4 mb-20"
           >
             <button
-              onClick={() => {}}
+              onClick={() => router.push("/collections/all")}
               className="group relative flex items-center pl-5 py-2 pr-3 rounded-full bg-blue-600 text-white text-[18px] cursor-pointer overflow-hidden"
             >
               <span className="relative z-10">Explore Products</span>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import HeadingSections from "./HeadingSections";
 import { ArrowRight } from "lucide-react";
 
@@ -9,7 +10,7 @@ export default function AboutSection() {
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center px-24 bg-[#f7fbff] relative">
       <HeadingSections
-        title="About Us"
+        title="Our Perspective"
         description="Meticulously crafted product to keep people hydrated, ready and equipped for whatever they’re into."
         align="left"
       />
@@ -17,7 +18,12 @@ export default function AboutSection() {
         <Image src="/water-splash.png" alt="bg" fill className="object-cover" />
       </div>
       <div className="inset-0 opacity-[0.08]">
-        <Image src="/splash-glass.png" alt="bg" fill className="object-contain object-right" />
+        <Image
+          src="/splash-glass.png"
+          alt="bg"
+          fill
+          className="object-contain object-right"
+        />
       </div>
       <section className="mb-8 flex py-8 flex-col items-center justify-center relative overflow-hidden  px-0">
         {/* SOFT GRADIENT */}
@@ -60,8 +66,8 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                 className="flex flex-wrap gap-4 mt-8"
               >
-                <button
-                  onClick={() => {}}
+                <Link
+                  href="/aboutus"
                   className="group relative flex items-center pl-5 py-2 pr-3 rounded-full bg-blue-600 text-white text-[18px] cursor-pointer overflow-hidden"
                 >
                   <span className="relative z-10">Learn more</span>
@@ -69,7 +75,7 @@ export default function AboutSection() {
                   <span className="relative z-10 ml-4 flex items-center justify-center w-10 h-10 rounded-full bg-white text-neutral-500 transition-transform duration-300 group-hover:rotate-0 -rotate-45">
                     <ArrowRight />
                   </span>
-                </button>
+                </Link>
               </motion.div>
               {/* STATS */}
               <div className="mt-16 grid gap-6 md:grid-cols-3">

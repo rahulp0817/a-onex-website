@@ -1,4 +1,11 @@
-import { PhoneCall, Send, MessagesSquare, MapPin, Linkedin, Instagram } from "lucide-react";
+import {
+  PhoneCall,
+  Send,
+  MessagesSquare,
+  MapPin,
+  Linkedin,
+  Instagram,
+} from "lucide-react";
 import React from "react";
 
 const ContactDetails = () => {
@@ -29,19 +36,19 @@ const ContactDetails = () => {
           </p>
         </div>
         <div className="flex flex-col gap-2">
-          <p className="flex gap-2 text-[15px] font-semibold items-center">
+          <p className="flex gap-2 text-[15px] cursor-pointer hover:underline font-semibold items-center">
             <MessagesSquare size={16} className="text-[#152f3e]" />
             Message on WhatsApp
           </p>
-          <p className="flex gap-2 text-[15px] font-semibold items-center">
+          <p className="flex gap-2 text-[15px] cursor-pointer hover:underline font-semibold items-center">
             <Send size={16} className="text-[#152f3e]" />
             Shoot us an email
           </p>
-          <p className="flex gap-2 text-[15px] font-semibold items-center">
+          <p className="flex gap-2 text-[15px] cursor-pointer hover:underline font-semibold items-center">
             <Linkedin size={16} className="text-[#152f3e]" />
             Message us on LinkedIn
           </p>
-          <p className="flex gap-2 text-[15px] font-semibold items-center">
+          <p className="flex gap-2 text-[15px] cursor-pointer hover:underline font-semibold items-center">
             <Instagram size={16} className="text-[#152f3e]" />
             Message us on Instagram
           </p>

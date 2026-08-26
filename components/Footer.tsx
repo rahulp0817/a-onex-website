@@ -43,9 +43,8 @@ const Footer = () => {
       items: [
         { name: "About", link: "/aboutus" },
         { name: "Products", link: "/collections/all" },
-        { name: "Become Dealer", link: "/club" },
-        { name: "Gallery", link: "/collections/all" },
-        { name: "Manufacturing Plants", link: "/collections/all" },
+        { name: "Become Dealer", link: "/contact" },
+        { name: "Gallery", link: "/gallery" },
       ],
     },
     {
@@ -89,7 +88,6 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#152f3e] font-sans mt-12">
-
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
@@ -202,7 +200,6 @@ const Footer = () => {
             <ArrowUp className="w-4 h-4" />
           </motion.button>
         </div>
-
       </div>
     </footer>
   );
